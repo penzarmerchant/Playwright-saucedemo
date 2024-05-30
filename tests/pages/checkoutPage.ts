@@ -15,7 +15,7 @@ export class checkoutPage extends BasePage {
     this.firstNameTextBox=page.locator('//input[@id="first-name"]');
     this.lastNameTextBox=page.locator('//input[@id="last-name"]');
     this.pincodeTextBox=page.locator('//input[@id="postal-code"]');
-    this.continueButton=page.locator('//input[@id="continue"]');
+    this.continueButton=page.locator('#continue');
     this.cancelButton=page.locator('//button[@name="cancel"]')
  }
  

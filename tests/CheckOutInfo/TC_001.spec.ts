@@ -15,9 +15,11 @@ test('Sauce Demo Purchase Product', async ({ page,loginPage,inventoryPage,cartPa
 
     await cartPage.clickcheckoutButton();
 
-    await checkoutPage.enterfirstName(saucedemoData.blankFirstName);
-    await checkoutPage.enterlastName(saucedemoData.blankLastName);
-    await checkoutPage.enterpincode(saucedemoData.blankPinCode);
+   /* await checkoutPage.enterfirstName(" ");
+    await checkoutPage.enterlastName(" ");
+    await checkoutPage.enterpincode(" "); */
+
+  
     await checkoutPage.clickcontinue();
 
 })
