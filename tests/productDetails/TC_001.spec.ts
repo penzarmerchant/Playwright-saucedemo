@@ -11,7 +11,10 @@ test('View Purchase Product List', async ({ page,loginPage,inventoryPage}) => {
     await inventoryPage.clickbackpackImage();
     await page.waitForTimeout(1000);
 
-    const confirmMessage=page.locator('[data-test="inventory-item-name"]');
+    const confirmMessage=await page.locator('[data-test="inventory-item-name"]');
     expect(confirmMessage).toHaveText("Sauce Labs Backpack");
+
+    //const confirmationMessage = await page.locator('.complete-header').textContent();
+    //expect(confirmationMessage).toContain('Thank you for your order!');
 
 })
