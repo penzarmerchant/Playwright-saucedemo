@@ -19,6 +19,18 @@ test('Sauce Demo Purchase Product', async ({ page,loginPage,inventoryPage,cartPa
     await checkoutPage.enterlastName(" ");
     await checkoutPage.enterpincode(" "); 
 
+    await page.waitForTimeout(1000);
+    
+    const continueButton = checkoutPage.continueButton;
+    const isEnabled = await continueButton.isEnabled();
+    
+    console.log(`Continue button enabled: ${isEnabled}`);
+    
+    if (isEnabled) {
+        await checkoutPage.clickcontinue();
+    } else {
+        console.log('Continue button is not enabled');
+    }
   
     await checkoutPage.clickcontinue();
 

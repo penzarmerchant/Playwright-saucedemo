@@ -6,8 +6,9 @@ export class checkoutPage extends BasePage {
  private readonly firstNameTextBox:Locator;
  private readonly lastNameTextBox:Locator;
  private readonly pincodeTextBox:Locator;
- private readonly continueButton:Locator;
+ readonly continueButton:Locator;
  private readonly cancelButton:Locator;
+    locator: any;
 
  constructor(page:Page)
  {
@@ -38,6 +39,7 @@ export class checkoutPage extends BasePage {
 
 async clickcontinue()
  {
+   
     this.clickelement(this.continueButton);
  }
 
