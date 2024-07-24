@@ -23,8 +23,6 @@ export default class BasePage{
         await element.fill(text);
     }
 
-   
-
     async waitForElementVisible(selector:string){
         await this.page.waitForSelector(selector,{state:'visible'});
     }
