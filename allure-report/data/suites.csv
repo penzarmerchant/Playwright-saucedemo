@@ -1,0 +1,7 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"","5907","Login with blank username and password","chromium","Thu Aug 08 12:09:23 IST 2024","passed","Thu Aug 08 12:09:29 IST 2024","","login\TC_005.spec.ts","",""
+"","5618","Login with invalid Password","chromium","Thu Aug 08 12:09:12 IST 2024","passed","Thu Aug 08 12:09:17 IST 2024","","login\TC_002.spec.ts","",""
+"","5429","Login with invalid Credentials","chromium","Thu Aug 08 12:09:12 IST 2024","passed","Thu Aug 08 12:09:17 IST 2024","","login\TC_001.spec.ts","",""
+"","2878","Login with invalid username","chromium","Thu Aug 08 12:09:21 IST 2024","passed","Thu Aug 08 12:09:24 IST 2024","","login\TC_003.spec.ts","",""
+"","6876","Login with valid credentails","chromium","Thu Aug 08 12:09:24 IST 2024","passed","Thu Aug 08 12:09:31 IST 2024","","login\TC_006.spec.ts","",""
+"","2565","Login with blank username","chromium","Thu Aug 08 12:09:21 IST 2024","passed","Thu Aug 08 12:09:23 IST 2024","","login\TC_004.spec.ts","",""
