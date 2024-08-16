@@ -8,10 +8,10 @@
     "generate:report": "npx allure generate ./allure-results --clean",
     "open:report": "npx allure open ./allure-report",
     "pretest": "npm run clean:report",
-    "posttest": "npm run generate:report",
-    "chromium":"npx playwright test ./tests/alertHandling.spec.ts --project=chromium",
-    "firefox":"npx playwright test ./tests/alertHandling.spec.ts --project=firefox",
-    "webkit":"npx playwright test ./tests/alertHandling.spec.ts --project=webkit",
+    "posttest": "npm run generate:report && npm run open:report",
+    "chromium": "npx playwright test ./tests/Cart/TC_005.spec.ts --project=chromium",
+    "firefox": "npx playwright test ./tests/alertHandling.spec.ts --project=firefox",
+    "webkit": "npx playwright test ./tests/Cart/TC_005.spec.ts --project=webkit",
     "test:chromium": "npm run pretest && npm run chromium && npm run posttest|| npm run posttest",
     "test:firefox": "npm run pretest && npm run firefox && npm run posttest|| npm run posttest",
     "test:webkit": "npm run pretest && npm run webkit && npm run posttest|| npm run posttest"
@@ -22,7 +22,9 @@
   "devDependencies": {
     "@playwright/test": "^1.44.0",
     "@types/node": "^20.12.12",
-    "csv-parse": "^5.5.6"
+    "csv-parse": "^5.5.6",
+    "mkdirp": "^3.0.1",
+    "rimraf": "^6.0.1"
   },
   "dependencies": {
     "allure-commandline": "^2.30.0",

@@ -1,14 +1,14 @@
 import {test as baseTest} from '@playwright/test'
 
-import { LoginPage } from '../tests/pages/loginpage';
+import { LoginPage } from '../pages/loginpage';
 
-import { inventoryPage } from '../tests/pages/inventoryPage';
+import { inventoryPage } from '../pages/inventoryPage';
 
-import { checkoutPage } from '../tests/pages/checkoutPage';
+import { checkoutPage } from '../pages/checkoutPage';
 
-import { cartPage } from '../tests/pages/cartpage';
+import { cartPage } from '../pages/cartpage';
 
-import { overviewPage } from '../tests/pages/overviewPage';
+import { overviewPage } from '../pages/overviewPage';
 
 type pages = {
     loginPage:LoginPage,
