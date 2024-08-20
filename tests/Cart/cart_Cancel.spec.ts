@@ -22,9 +22,8 @@ test('Sauce Demo Purchase Product-Cancel', async ({ page, loginPage, inventoryPa
     await checkoutPage.enterpincode('400101');*/
   
    await checkoutPage.clickcontinue();
-   const confirmationMessage = await page.locator('//span[@class="title"]').textContent();
-    expect(confirmationMessage).toContain('Checkout: Your Information');
-   await page.pause();
+   expect(await checkoutPage.getErrorMessageText()).toEqual('Error: First Name is required');
+   
    
 
 })

@@ -3,7 +3,6 @@ import BasePage from './basepage';
 
 export class inventoryPage extends BasePage {
   // Locators
-  readonly page: Page;
   private readonly addbackpack: Locator;
   private readonly addbacklight: Locator;
   private readonly tshirt: Locator;

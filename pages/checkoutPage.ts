@@ -1,13 +1,13 @@
 import { Page, Locator } from '@playwright/test';
 import BasePage from './basepage';
 
-export class checkoutPage extends BasePage {
-    readonly page:Page   
+export class checkoutPage extends BasePage { 
  private readonly firstNameTextBox:Locator;
  private readonly lastNameTextBox:Locator;
  private readonly pincodeTextBox:Locator;
  private readonly  continueButton:Locator;
  private readonly cancelButton:Locator;
+ private readonly errorMessage:Locator;
     
 
  constructor(page:Page)
@@ -18,6 +18,7 @@ export class checkoutPage extends BasePage {
     this.pincodeTextBox=page.locator('//input[@id="postal-code"]');
     this.continueButton=page.locator('//input[@id="continue"]');
     this.cancelButton=page.locator('//button[@name="cancel"]')
+    this.errorMessage=page.locator('h3[data-test="error"]');
  }
  
  //Method to operate the Locators
@@ -54,7 +55,12 @@ async clickcontinue()
    return this.continueButton.isEnabled();
    
  }
- 
+ async getErrorMessageText():Promise<string>
+ {
+
+      return await this.getElementText(this.errorMessage);
+
+ }
 }
 
 

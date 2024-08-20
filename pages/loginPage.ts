@@ -4,11 +4,9 @@ import BasePage from './basepage';
 export class LoginPage extends BasePage
 {
  //Locators
- readonly page:Page
  private readonly usernameTextBox:Locator;
  private readonly passwordTextBox:Locator;
  private readonly loginButton:Locator;
- 
  
  constructor(page:Page)
  {

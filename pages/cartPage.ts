@@ -1,21 +1,18 @@
 import { Page, Locator } from '@playwright/test';
 import BasePage from './basepage';
 
+export class cartPage extends BasePage {
 
+  private readonly checkoutButton: Locator;
 
-export class cartPage extends BasePage{
+  constructor(page: Page) {
+    super(page)
+    this.checkoutButton = page.locator('#checkout');
 
-   readonly checkoutButton: Locator;
+  }
 
-
-    constructor(page: Page) {
-        super(page)
-        this.checkoutButton = page.locator('#checkout');
-       
-      }
-    
-      // Method to operate the Locators
-      async clickcheckoutButton() {
-        await this.clickelement(this.checkoutButton);
-      }
+  // Method to operate the Locators
+  async clickcheckoutButton() {
+    await this.clickelement(this.checkoutButton);
+  }
 }

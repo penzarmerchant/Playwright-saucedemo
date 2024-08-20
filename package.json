@@ -7,6 +7,7 @@
     "clean:report": "rimraf allure-report allure-results && mkdirp allure-report allure-results",
     "generate:report": "npx allure generate ./allure-results --clean",
     "open:report": "npx allure open ./allure-report",
+    "execute:scrpit": "npx playwright test",
     "pretest": "npm run clean:report",
     "posttest": "npm run generate:report && npm run open:report",
     "chromium": "npx playwright test ./tests/Cart/TC_005.spec.ts --project=chromium",
@@ -14,7 +15,8 @@
     "webkit": "npx playwright test ./tests/Cart/TC_005.spec.ts --project=webkit",
     "test:chromium": "npm run pretest && npm run chromium && npm run posttest|| npm run posttest",
     "test:firefox": "npm run pretest && npm run firefox && npm run posttest|| npm run posttest",
-    "test:webkit": "npm run pretest && npm run webkit && npm run posttest|| npm run posttest"
+    "test:webkit": "npm run pretest && npm run webkit && npm run posttest|| npm run posttest",
+    "test": "npm run execute:scrpit || npm run posttest"
   },
   "keywords": [],
   "author": "",
