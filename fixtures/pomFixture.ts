@@ -1,17 +1,17 @@
 import {test as baseTest} from '@playwright/test'
 
-import { LoginPage } from '../pages/loginpage';
+import { loginPage } from '../tests/pages/loginPage'
 
-import { inventoryPage } from '../pages/inventoryPage';
+import { inventoryPage } from '../tests/pages/inventoryPage';
 
-import { checkoutPage } from '../pages/checkoutPage';
+import { checkoutPage } from '../tests/pages/checkoutPage';
 
-import { cartPage } from '../pages/cartpage';
+import { cartPage } from '../tests/pages/cartPage';
 
-import { overviewPage } from '../pages/overviewPage';
+import { overviewPage } from '../tests/pages/overviewPage';
 
 type pages = {
-    loginPage:LoginPage,
+    loginPage:loginPage,
     inventoryPage:inventoryPage,
     checkoutPage:checkoutPage,
     cartPage:cartPage,
@@ -19,7 +19,7 @@ type pages = {
 }
 const testPages = baseTest.extend<pages>({
     loginPage: async({page}, use) =>{
-        await use(new LoginPage(page));
+        await use(new loginPage(page));
     },
     inventoryPage: async({page}, use) =>{
         await use(new inventoryPage(page));

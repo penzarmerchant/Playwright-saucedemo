@@ -10,8 +10,8 @@ import { defineConfig, devices } from '@playwright/test';
  * See https://playwright.dev/docs/test-configuration.
  */
 export default defineConfig({
-  timeout:20000,
-  testDir: './tests',
+  timeout:30000,
+  testDir: './tests/spec',
   /* Run tests in files in parallel */
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
@@ -24,13 +24,13 @@ export default defineConfig({
   reporter: [['html',{open:'never'}],['allure-playwright']],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
-    /* Base URL to use in actions like `await page.goto('/')`. */
-    // baseURL: 'http://127.0.0.1:3000',
+     //Base URL to use in actions like `await page.goto('/')`. */
+     baseURL: 'https://www.saucedemo.com/',
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
     screenshot:'only-on-failure',
-    video:'on-first-retry'
+    video:'retain-on-failure'
   },
 
   /* Configure projects for major browsers */
