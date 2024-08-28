@@ -13,6 +13,7 @@ export class inventoryPage extends BasePage {
   private readonly cartLogo: Locator;
   private readonly backpackimage:Locator;
   private readonly cartCount:Locator;
+  private readonly sortButton:Locator;
 
   constructor(page: Page) {
     
@@ -26,6 +27,7 @@ export class inventoryPage extends BasePage {
     this.cartLogo = page.locator('a[class="shopping_cart_link"]');
     this.backpackimage=page.locator('#item_4_img_link');
     this.cartCount=page.locator('span[data-test="shopping-cart-badge"]')
+    this.sortButton=page.locator('select[data-test="product-sort-container"]');
   }
 
   // Method to operate the Locators
@@ -68,4 +70,29 @@ export class inventoryPage extends BasePage {
     const cartCountText=await this.getElementText(this.cartCount);
     return parseInt(cartCountText);
   }
+
+  async sortProducts(sortType:string){
+    await this.sortButton.selectOption(sortType)
+  }
+
+  async getAllProductItemName():Promise<string[]>{
+    const allelements=await this.page.$$('div[data-test="inventory-item-name"]');
+    let allProductNameText=[];
+    for(let e of allelements){
+      const nameText =await e.textContent();
+      allProductNameText.push(nameText);
+    }  
+    return allProductNameText
+ }
+
+ async getAllProductItemPrice():Promise<number[]>{
+  const allelements=await this.page.$$('div[data-test="inventory-item-price"]');
+  let allProductPriceText=[];
+  for(let e of allelements){
+    const priceText =(await e.textContent()).replace('$','').trim();
+    const priceNumber=parseFloat(priceText);
+    allProductPriceText.push(priceNumber);
+  }  
+  return allProductPriceText
+}
 }
