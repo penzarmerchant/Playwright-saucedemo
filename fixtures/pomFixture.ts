@@ -10,7 +10,9 @@ import { cartPage } from '../tests/pages/cartPage';
 
 import { overviewPage } from '../tests/pages/overviewPage';
 
-import  {sidePanelPage} from '../tests/pages/sidePanelPage'
+import  {sidePanelPage} from '../tests/pages/sidePanelPage';
+
+import  {OrderConfirmationPage} from '../tests/pages/orderConfirmationPage'
 
 type pages = {
     loginPage:loginPage,
@@ -19,6 +21,7 @@ type pages = {
     cartPage:cartPage,
     overviewPage:overviewPage,
     sidePanelPage:sidePanelPage,
+    orderConfirmationPage:OrderConfirmationPage
 
 }
 const testPages = baseTest.extend<pages>({
@@ -40,6 +43,10 @@ const testPages = baseTest.extend<pages>({
 
     sidePanelPage: async({page}, use) =>{
         await use(new sidePanelPage(page));
+    },
+
+    orderConfirmationPage: async({page}, use) =>{
+        await use(new OrderConfirmationPage(page));
     },
 
 })

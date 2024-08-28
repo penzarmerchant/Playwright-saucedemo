@@ -4,15 +4,32 @@ import BasePage from './basepage';
 export class cartPage extends BasePage {
 
   private readonly checkoutButton: Locator;
+  private readonly removeBackPackButton:Locator;
+  private readonly itemNameCount:Locator;
 
   constructor(page: Page) {
     super(page)
     this.checkoutButton = page.locator('#checkout');
-
+    this.removeBackPackButton=page.locator('#remove-sauce-labs-backpack');
+    this.itemNameCount=page.locator('div[data-test="inventory-item-name"]');
   }
 
   // Method to operate the Locators
   async clickcheckoutButton() {
     await this.clickelement(this.checkoutButton);
   }
+
+  async removeItembackpack(){
+    await this.clickelement(this.removeBackPackButton);
+  }
+
+ async allItemNameCount():Promise<number>{
+    const allelements= await this.page.$$('div[data-test="inventory-item-name"]');
+    const productItemName=[];
+    for(let e of allelements){
+      const nameText=await e.textContent();
+      productItemName.push(nameText);
+    }
+    return productItemName.length
+ }
 }
