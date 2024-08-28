@@ -59,8 +59,14 @@ async clickcontinue()
  {
 
       return await this.getElementText(this.errorMessage);
+}
 
- }
+async completeCheckOut(){
+   await this.enterfirstName('Penzar');
+    await this.enterlastName('Merchant');
+    await this.enterpincode('400101');
+    await this.clickcontinue();
+}
 }
 
 

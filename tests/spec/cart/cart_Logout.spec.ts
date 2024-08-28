@@ -20,10 +20,7 @@ test('Sauce Demo Purchase Product-Logout', async ({ page, loginPage, inventoryPa
 
     await cartPage.clickcheckoutButton();
 
-    await checkoutPage.enterfirstName('Penzar');
-    await checkoutPage.enterlastName('Merchant');
-    await checkoutPage.enterpincode('400101');
-    //await checkoutPage.clickcontinue();
+    
 
     await page.locator('#react-burger-menu-btn').click();
     await page.locator('#logout_sidebar_link').click();
