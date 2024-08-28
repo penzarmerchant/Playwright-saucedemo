@@ -61,3 +61,22 @@ test('Sauce Demo-Total of All Items', async ({inventoryPage, cartPage, checkoutP
     const allproductprice = await checkoutPage.getAllProductPriceListTotal();
     expect(allproductprice).toEqual(totalprice);
 });
+
+test('Open new Tab ', async ({ page, loginPage, inventoryPage, cartPage, checkoutPage, overviewPage }) => {
+    await page.goto('/');
+    await loginPage.loginUser(saucedemoData.validUsername, saucedemoData.validPassword);
+    await inventoryPage.addBackpack();
+    await inventoryPage.addBacklight();
+    await inventoryPage.clickCartLogo();
+    const newTab = await page.context().newPage();
+    await newTab.goto('/');
+    // Log in again in the new tab
+    await newTab.fill('#user-name', saucedemoData.validUsername);
+    await newTab.fill('#password', saucedemoData.validPassword);
+    await newTab.click('#login-button');
+    await newTab.waitForLoadState('load');
+    await newTab.click('.shopping_cart_link');
+    await expect(page).toHaveTitle('Swag Labs');
+    await newTab.waitForTimeout(2000);
+    await newTab.close();
+  })
