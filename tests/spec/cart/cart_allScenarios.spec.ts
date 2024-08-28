@@ -4,7 +4,7 @@ import * as saucedemoData from '@testData/sauceDemoCredentials.json'
 const successMessage = 'Thank you for your order!';
 const errorMessage = 'Error: First Name is required';
 
-test.beforeEach(async ({ page, loginPage, sidePanelPage }) => {
+test.beforeEach(async ({ page, loginPage}) => {
     await page.goto('/');
     await loginPage.loginUser(saucedemoData.validUsername, saucedemoData.validPassword);
 });
