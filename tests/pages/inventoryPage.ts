@@ -8,7 +8,6 @@ export class InventoryPage extends BasePage {
   private readonly tshirt: Locator;
   private readonly addfleeceJacket: Locator;
   private readonly removebackpack: Locator;
-  private readonly removetshirt: Locator;
   private readonly removefleecejacket: Locator;
   private readonly cartLogo: Locator;
   private readonly backpackimage:Locator;

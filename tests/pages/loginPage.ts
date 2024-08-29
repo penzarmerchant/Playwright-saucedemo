@@ -9,7 +9,6 @@ export class LoginPage extends BasePage
  private readonly loginButton:Locator;
  private readonly errorMessage:Locator;
  
- 
  constructor(page:Page)
  {
     super(page);

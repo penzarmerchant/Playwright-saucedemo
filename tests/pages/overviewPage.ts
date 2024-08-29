@@ -9,7 +9,6 @@ export class OverviewPage extends BasePage {
     this.finishButton = page.locator('#finish');
 
   }
-
   // Method to operate the Locators
   async clickonfinish() {
     await this.clickelement(this.finishButton);

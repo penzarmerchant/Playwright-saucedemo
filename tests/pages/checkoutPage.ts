@@ -2,10 +2,11 @@ import { Page, Locator } from '@playwright/test';
 import BasePage from './basepage';
 
 export class CheckoutPage extends BasePage { 
+
  private readonly firstNameTextBox:Locator;
  private readonly lastNameTextBox:Locator;
  private readonly pincodeTextBox:Locator;
- private readonly  continueButton:Locator;
+ private readonly continueButton:Locator;
  private readonly cancelButton:Locator;
  private readonly errorMessage:Locator;
  private readonly totalPriceText:Locator;
