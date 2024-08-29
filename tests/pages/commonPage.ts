@@ -7,6 +7,7 @@ export class CommonPage extends BasePage {
   private readonly allItemsButton:Locator;
   private readonly aboutButton:Locator;
   private readonly logoutButton:Locator;
+  private readonly cartCount:Locator;
 
   constructor(page: Page) {
     super(page)
@@ -14,6 +15,7 @@ export class CommonPage extends BasePage {
     this.allItemsButton=page.locator('#inventory_sidebar_link');
     this.aboutButton=page.locator('#about_sidebar_link');
     this.logoutButton=page.locator('#logout_sidebar_link');
+    this.cartCount=page.locator('span[data-test="shopping-cart-badge"]')
   }
 
   // Method to operate the Locators
@@ -31,6 +33,16 @@ export class CommonPage extends BasePage {
 
   async clickLogout(){
     await this.clickelement(this.logoutButton);
+  }
+
+  async userLogout() {
+    await this.clickHamburgerIcon();
+    await this.clickLogout();
+  }
+
+  async cartCountValues():Promise<number>{
+    const cartCountText=await this.getElementText(this.cartCount);
+    return parseInt(cartCountText);
   }
 
 }

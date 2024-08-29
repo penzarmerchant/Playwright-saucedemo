@@ -9,7 +9,7 @@ test.beforeEach(async ({ page, loginPage}) => {
     await loginPage.loginUser(saucedemoData.validUsername, saucedemoData.validPassword);
 });
 
-test('Sauce Demo Purchase Product', async ({ inventoryPage, cartPage, checkoutPage, overviewPage, orderConfirmationPage, sidePanelPage }) => {
+test('Sauce Demo Purchase Product', async ({ inventoryPage, cartPage, checkoutPage, overviewPage, orderConfirmationPage,commonPage }) => {
     await inventoryPage.addBackpack();
     await inventoryPage.addBacklight();
     await inventoryPage.clickCartLogo();
@@ -18,7 +18,7 @@ test('Sauce Demo Purchase Product', async ({ inventoryPage, cartPage, checkoutPa
     await checkoutPage.completeCheckout(saucedemoData.firstName, saucedemoData.lastName, saucedemoData.pinCode);
     await overviewPage.clickonfinish();
     expect(await orderConfirmationPage.getSuccessMessage()).toEqual(successMessage);
-    await sidePanelPage.userLogout();
+    await commonPage.userLogout();
 });
 
 test('Sauce Demo Purchase Product with blank user details', async ({ inventoryPage, cartPage, checkoutPage}) => {
@@ -30,15 +30,15 @@ test('Sauce Demo Purchase Product with blank user details', async ({ inventoryPa
     expect(await checkoutPage.getErrorMessageText()).toEqual(errorMessage);
 });
 
-test('Sauce Demo- Count of the Cart Items', async ({inventoryPage}) => {
+test('Sauce Demo- Count of the Cart Items', async ({inventoryPage,commonPage}) => {
     await inventoryPage.addBackpack();
     await inventoryPage.addBacklight();
-    expect(await inventoryPage.cartCountValues()).toEqual(2);
+    expect(await commonPage.cartCountValues()).toEqual(2);
     await inventoryPage.removeItembackpack();
-    expect(await inventoryPage.cartCountValues()).toEqual(1);
+    expect(await commonPage.cartCountValues()).toEqual(1);
 });
 
-test('Sauce Demo- Remove items from cart page', async ({inventoryPage, cartPage}) => {
+test('Sauce Demo- Remove items from cart page', async ({inventoryPage, cartPage,commonPage}) => {
     await inventoryPage.addBackpack();
     await inventoryPage.addBacklight();
     await inventoryPage.addtshirt();
@@ -46,7 +46,7 @@ test('Sauce Demo- Remove items from cart page', async ({inventoryPage, cartPage}
     await inventoryPage.clickCartLogo();
     await cartPage.removeItembackpack();
     expect(await cartPage.allItemNameCount()).toEqual(3);
-    expect(await inventoryPage.cartCountValues()).toEqual(3);
+    expect(await commonPage.cartCountValues()).toEqual(3);
 });
 
 test('Sauce Demo-Total of All Items', async ({inventoryPage, cartPage, checkoutPage}) => {

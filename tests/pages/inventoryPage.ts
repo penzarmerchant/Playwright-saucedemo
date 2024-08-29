@@ -12,7 +12,6 @@ export class InventoryPage extends BasePage {
   private readonly removefleecejacket: Locator;
   private readonly cartLogo: Locator;
   private readonly backpackimage:Locator;
-  private readonly cartCount:Locator;
   private readonly sortButton:Locator;
 
   constructor(page: Page) {
@@ -26,7 +25,6 @@ export class InventoryPage extends BasePage {
     this.tshirt=page.locator('button[name="add-to-cart-test.allthethings()-t-shirt-(red)"]');
     this.cartLogo = page.locator('a[class="shopping_cart_link"]');
     this.backpackimage=page.locator('#item_4_img_link');
-    this.cartCount=page.locator('span[data-test="shopping-cart-badge"]')
     this.sortButton=page.locator('select[data-test="product-sort-container"]');
   }
 
@@ -64,11 +62,6 @@ export class InventoryPage extends BasePage {
   async clickbackpackImage()
   {
     await this.clickelement(this.backpackimage);
-  }
-
-  async cartCountValues():Promise<number>{
-    const cartCountText=await this.getElementText(this.cartCount);
-    return parseInt(cartCountText);
   }
 
   async sortProducts(sortType:string){
