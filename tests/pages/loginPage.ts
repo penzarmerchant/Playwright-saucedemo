@@ -43,4 +43,8 @@ async clickLoginbutton()
  async getErrorMessage():Promise<string>{
    return await this.getElementText(this.errorMessage);
  }
+
+ async isLoginButtonVisible():Promise<boolean>{
+   return this.isElementVisible(this.loginButton);
+ }
 }

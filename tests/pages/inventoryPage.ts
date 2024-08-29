@@ -95,4 +95,8 @@ export class InventoryPage extends BasePage {
   }  
   return allProductPriceText
 }
+
+async isSortButtonVisible():Promise<boolean>{
+  return this.isElementVisible(this.sortButton);
+}
 }

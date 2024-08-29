@@ -1,54 +1,51 @@
 import {test as baseTest} from '@playwright/test'
-
-import { loginPage } from '../tests/pages/loginPage'
-
-import { inventoryPage } from '../tests/pages/inventoryPage';
-
-import { checkoutPage } from '../tests/pages/checkoutPage';
-
-import { cartPage } from '../tests/pages/cartPage';
-
-import { overviewPage } from '../tests/pages/overviewPage';
-
-import  {sidePanelPage} from '../tests/pages/sidePanelPage';
-
-import  {OrderConfirmationPage} from '../tests/pages/orderConfirmationPage'
+import { LoginPage } from '@pages/loginPage';
+import { InventoryPage } from '@pages/inventoryPage';
+import { CheckoutPage } from '@pages/checkoutPage';
+import { CartPage } from '@pages/cartPage';
+import { OverviewPage } from '@pages/overviewPage';
+import { SidePanelPage } from '@pages/sidePanelPage';
+import { OrderConfirmationPage } from '@pages/orderConfirmationPage';
+import { CommonPage } from '@pages/commonPage';
 
 type pages = {
-    loginPage:loginPage,
-    inventoryPage:inventoryPage,
-    checkoutPage:checkoutPage,
-    cartPage:cartPage,
-    overviewPage:overviewPage,
-    sidePanelPage:sidePanelPage,
+    loginPage:LoginPage,
+    inventoryPage:InventoryPage,
+    checkoutPage:CheckoutPage,
+    cartPage:CartPage,
+    overviewPage:OverviewPage,
+    sidePanelPage:SidePanelPage,
     orderConfirmationPage:OrderConfirmationPage
-
+    commonPage:CommonPage
 }
 const testPages = baseTest.extend<pages>({
     loginPage: async({page}, use) =>{
-        await use(new loginPage(page));
+        await use(new LoginPage(page));
     },
     inventoryPage: async({page}, use) =>{
-        await use(new inventoryPage(page));
+        await use(new InventoryPage(page));
     },
     checkoutPage: async({page}, use) =>{
-        await use(new checkoutPage(page));
+        await use(new CheckoutPage(page));
     },
     cartPage: async({page}, use) =>{
-        await use(new cartPage(page));
+        await use(new CartPage(page));
     },
     overviewPage: async({page}, use) =>{
-        await use(new overviewPage(page));
+        await use(new OverviewPage(page));
     },
 
     sidePanelPage: async({page}, use) =>{
-        await use(new sidePanelPage(page));
+        await use(new SidePanelPage(page));
     },
 
     orderConfirmationPage: async({page}, use) =>{
         await use(new OrderConfirmationPage(page));
     },
 
+    commonPage: async({page}, use) =>{
+        await use(new CommonPage(page));
+    },
 })
 
 export const test = testPages;

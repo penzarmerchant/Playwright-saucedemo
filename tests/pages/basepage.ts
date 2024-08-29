@@ -38,4 +38,9 @@ export default class BasePage {
         return element.innerText();
 
     }
+
+    async isElementVisible(element:Locator):Promise<boolean>{
+        this.waitForElementVisible(element);
+        return element.isVisible();      
+    }
 }
