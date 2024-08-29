@@ -1,7 +1,7 @@
 import { Page, Locator } from '@playwright/test';
 import BasePage from './basepage';
 
-export class sidePanelPage extends BasePage {
+export class SidePanelPage extends BasePage {
 
   private readonly hamburgerIcon: Locator;
   private readonly logoutButton: Locator;

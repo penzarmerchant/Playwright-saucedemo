@@ -1,7 +1,7 @@
 import { Page, Locator } from '@playwright/test';
 import BasePage from './basepage';
 
-export class inventoryPage extends BasePage {
+export class InventoryPage extends BasePage {
   // Locators
   private readonly addbackpack: Locator;
   private readonly addbacklight: Locator;

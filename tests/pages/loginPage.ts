@@ -1,7 +1,7 @@
 import {Page,Locator} from '@playwright/test'
 import BasePage from './basepage';
 
-export class loginPage extends BasePage
+export class LoginPage extends BasePage
 {
  //Locators
  private readonly usernameTextBox:Locator;

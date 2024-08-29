@@ -1,7 +1,7 @@
 import { Page, Locator } from '@playwright/test';
 import BasePage from './basepage';
 
-export class overviewPage extends BasePage {
+export class OverviewPage extends BasePage {
 
   private readonly finishButton: Locator;
   constructor(page: Page) {
