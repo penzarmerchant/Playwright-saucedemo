@@ -62,7 +62,7 @@ test('Sauce Demo-Total of All Items', async ({inventoryPage, cartPage, checkoutP
     expect(allproductprice).toEqual(totalprice);
 });
 
-test('Open new Tab ', async ({ page, loginPage, inventoryPage, cartPage, checkoutPage, overviewPage }) => {
+test('Open new Tab ', async ({ page, loginPage, inventoryPage}) => {
     await page.goto('/');
     await loginPage.loginUser(saucedemoData.validUsername, saucedemoData.validPassword);
     await inventoryPage.addBackpack();
