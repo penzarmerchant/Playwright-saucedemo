@@ -10,6 +10,7 @@ export class CheckoutPage extends BasePage {
  private readonly cancelButton:Locator;
  private readonly errorMessage:Locator;
  private readonly totalPriceText:Locator;
+ private readonly allItemPrice:Locator;
  
  constructor(page:Page)
  {
@@ -20,7 +21,8 @@ export class CheckoutPage extends BasePage {
     this.continueButton=page.locator('#continue');
     this.cancelButton=page.locator('button[name="cancel"]')
     this.errorMessage=page.locator('h3[data-test="error"]');
-    this.totalPriceText=page.locator('div[data-test="total-label"]')
+    this.totalPriceText=page.locator('div[data-test="total-label"]');
+    this.allItemPrice=page.locator('div[data-test="inventory-item-price"]');
  }
  
  //Method to operate the Locators
@@ -78,7 +80,7 @@ async getTotalPriceText():Promise<number>{
 }
 
 async getAllProductPriceListTotal():Promise<number>{
-   const allelements=await this.page.$$('div[data-test="inventory-item-price"]');
+   const allelements=await this.allItemPrice.all();
    let productPriceSum=0;
    for(let e of allelements){
      const priceText =await e.textContent();

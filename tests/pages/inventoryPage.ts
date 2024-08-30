@@ -12,6 +12,8 @@ export class InventoryPage extends BasePage {
   private readonly cartLogo: Locator;
   private readonly backpackimage:Locator;
   private readonly sortButton:Locator;
+  private readonly allItemName:Locator;
+  private readonly allItemPrice:Locator;
 
   constructor(page: Page) {
     
@@ -25,6 +27,8 @@ export class InventoryPage extends BasePage {
     this.cartLogo = page.locator('a[class="shopping_cart_link"]');
     this.backpackimage=page.locator('#item_4_img_link');
     this.sortButton=page.locator('select[data-test="product-sort-container"]');
+    this.allItemName=page.locator('div[data-test="inventory-item-name"]');
+    this.allItemPrice=page.locator('div[data-test="inventory-item-price"]');
   }
 
   // Method to operate the Locators
@@ -68,7 +72,7 @@ export class InventoryPage extends BasePage {
   }
 
   async getAllProductItemName():Promise<string[]>{
-    const allelements=await this.page.$$('div[data-test="inventory-item-name"]');
+    const allelements=await this.allItemName.all();
     let allProductNameText=[];
     for(let e of allelements){
       const nameText =await e.textContent();
@@ -78,7 +82,7 @@ export class InventoryPage extends BasePage {
  }
 
  async getAllProductItemPrice():Promise<number[]>{
-  const allelements=await this.page.$$('div[data-test="inventory-item-price"]');
+  const allelements=await this.allItemPrice.all();
   let allProductPriceText=[];
   for(let e of allelements){
     const priceText =(await e.textContent()).replace('$','').trim();
