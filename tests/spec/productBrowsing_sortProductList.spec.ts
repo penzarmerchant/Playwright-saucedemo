@@ -6,7 +6,7 @@ test.beforeEach(async ({ page, loginPage }) => {
     await loginPage.loginUser(saucedemoData.validUsername, saucedemoData.validPassword);
 });
 
-test('Sort Product by name ascending', async ({inventoryPage }) => {
+test('Verify product list post sorting with name ascending', async ({inventoryPage }) => {
     const productName = await inventoryPage.getAllProductItemName();
     const sortedName = [...productName].sort((a, b) => a.localeCompare(b));
     expect(productName).toEqual(sortedName);
@@ -17,21 +17,21 @@ test('Sort Product by name ascending', async ({inventoryPage }) => {
     expect(productName1).toEqual(sortedName1);
 })
 
-test('Sort Product by name descending', async ({inventoryPage }) => {
+test('Verify product list post sorting with name descending', async ({inventoryPage }) => {
     await inventoryPage.sortProducts('Name (Z to A)');
     const productName = await inventoryPage.getAllProductItemName();
     const sortedName = [...productName].sort((a, b) => b.localeCompare(a));
     expect(productName).toEqual(sortedName);
 })
 
-test('Sort Product price low to high', async ({inventoryPage }) => {
+test('Verify product list post sorting with price low to high', async ({inventoryPage }) => {
     await inventoryPage.sortProducts('Price (low to high)');
     const productPrice = await inventoryPage.getAllProductItemPrice();
     const sortedPrice = [...productPrice].sort((a, b) => a - b);
     expect(productPrice).toEqual(sortedPrice);
 })
 
-test('Sort Product price high to low', async ({inventoryPage }) => {
+test('Verify product list post sorting with price high to low', async ({inventoryPage }) => {
     await inventoryPage.sortProducts('Price (high to low)');
     const productPrice = await inventoryPage.getAllProductItemPrice();
     const sortedPrice = [...productPrice].sort((a, b) => b - a);
