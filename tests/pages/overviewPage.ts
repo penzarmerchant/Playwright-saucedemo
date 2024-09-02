@@ -7,7 +7,6 @@ export class OverviewPage extends BasePage {
   constructor(page: Page) {
     super(page)
     this.finishButton = page.locator('#finish');
-
   }
   // Method to operate the Locators
   async clickonfinish() {

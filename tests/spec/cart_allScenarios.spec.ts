@@ -4,12 +4,12 @@ import * as saucedemoData from '@testData/sauceDemoCredentials.json'
 const successMessage = 'Thank you for your order!';
 const errorMessage = 'Error: First Name is required';
 
-test.beforeEach(async ({ page, loginPage}) => {
+test.beforeEach(async ({ page, loginPage }) => {
     await page.goto('/');
     await loginPage.loginUser(saucedemoData.validUsername, saucedemoData.validPassword);
 });
 
-test('Verify Successful Product Placement', async ({ inventoryPage, cartPage, checkoutPage, overviewPage, orderConfirmationPage,commonPage }) => {
+test('Verify Successful Product Placement', async ({ inventoryPage, cartPage, checkoutPage, overviewPage, orderConfirmationPage, commonPage }) => {
     await inventoryPage.addBackpack();
     await inventoryPage.addBacklight();
     await inventoryPage.clickCartLogo();
@@ -21,7 +21,7 @@ test('Verify Successful Product Placement', async ({ inventoryPage, cartPage, ch
     await commonPage.userLogout();
 });
 
-test('Verify that user cannot proceed to checkout with incomplete Details user details', async ({ inventoryPage, cartPage, checkoutPage}) => {
+test('Verify that user cannot proceed to checkout with incomplete Details user details', async ({ inventoryPage, cartPage, checkoutPage }) => {
     await inventoryPage.addBackpack();
     await inventoryPage.addBacklight();
     await inventoryPage.clickCartLogo();
@@ -30,7 +30,7 @@ test('Verify that user cannot proceed to checkout with incomplete Details user d
     expect(await checkoutPage.getErrorMessageText()).toEqual(errorMessage);
 });
 
-test('Verify the cart count', async ({inventoryPage,commonPage}) => {
+test('Verify the cart count', async ({ inventoryPage, commonPage }) => {
     await inventoryPage.addBackpack();
     await inventoryPage.addBacklight();
     expect(await commonPage.cartCountValues()).toEqual(2);
@@ -38,7 +38,7 @@ test('Verify the cart count', async ({inventoryPage,commonPage}) => {
     expect(await commonPage.cartCountValues()).toEqual(1);
 });
 
-test('Verify the product count in the cart page', async ({inventoryPage, cartPage,commonPage}) => {
+test('Verify the product count in the cart page', async ({ inventoryPage, cartPage, commonPage }) => {
     await inventoryPage.addBackpack();
     await inventoryPage.addBacklight();
     await inventoryPage.addtshirt();
@@ -49,7 +49,7 @@ test('Verify the product count in the cart page', async ({inventoryPage, cartPag
     expect(await commonPage.cartCountValues()).toEqual(3);
 });
 
-test('Verify the total price in cart page', async ({inventoryPage, cartPage, checkoutPage}) => {
+test('Verify the total price in cart page', async ({ inventoryPage, cartPage, checkoutPage }) => {
     await inventoryPage.addBackpack();
     await inventoryPage.addBacklight();
     await inventoryPage.addFleeceJacket();
@@ -62,7 +62,7 @@ test('Verify the total price in cart page', async ({inventoryPage, cartPage, che
     expect(allproductprice).toEqual(totalprice);
 });
 
-test('Accessing SauceLabs in new tab', async ({ page, loginPage, inventoryPage}) => {
+test('Accessing SauceLabs in new tab', async ({ page, loginPage, inventoryPage }) => {
     await page.goto('/');
     await loginPage.loginUser(saucedemoData.validUsername, saucedemoData.validPassword);
     await inventoryPage.addBackpack();
@@ -79,4 +79,4 @@ test('Accessing SauceLabs in new tab', async ({ page, loginPage, inventoryPage})
     await expect(page).toHaveTitle('Swag Labs');
     await newTab.waitForTimeout(2000);
     await newTab.close();
-  })
+})

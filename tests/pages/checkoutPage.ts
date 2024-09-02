@@ -1,104 +1,95 @@
 import { Page, Locator } from '@playwright/test';
 import BasePage from './basepage';
 
-export class CheckoutPage extends BasePage { 
+export class CheckoutPage extends BasePage {
 
- private readonly firstNameTextBox:Locator;
- private readonly lastNameTextBox:Locator;
- private readonly pincodeTextBox:Locator;
- private readonly continueButton:Locator;
- private readonly cancelButton:Locator;
- private readonly errorMessage:Locator;
- private readonly totalPriceText:Locator;
- private readonly allItemPrice:Locator;
- 
- constructor(page:Page)
- {
-    super(page);
-    this.firstNameTextBox=page.locator('#first-name');
-    this.lastNameTextBox=page.locator('#last-name');
-    this.pincodeTextBox=page.locator('#postal-code');
-    this.continueButton=page.locator('#continue');
-    this.cancelButton=page.locator('button[name="cancel"]')
-    this.errorMessage=page.locator('h3[data-test="error"]');
-    this.totalPriceText=page.locator('div[data-test="total-label"]');
-    this.allItemPrice=page.locator('div[data-test="inventory-item-price"]');
- }
- 
- //Method to operate the Locators
+   private readonly firstNameTextBox: Locator;
+   private readonly lastNameTextBox: Locator;
+   private readonly pincodeTextBox: Locator;
+   private readonly continueButton: Locator;
+   private readonly cancelButton: Locator;
+   private readonly errorMessage: Locator;
+   private readonly totalPriceText: Locator;
+   private readonly allItemPrice: Locator;
 
- async enterfirstName(firstNameText:string)
- {
-    await this.fillField(this.firstNameTextBox,firstNameText);
- }
+   constructor(page: Page) {
+      super(page);
+      this.firstNameTextBox = page.locator('#first-name');
+      this.lastNameTextBox = page.locator('#last-name');
+      this.pincodeTextBox = page.locator('#postal-code');
+      this.continueButton = page.locator('#continue');
+      this.cancelButton = page.locator('button[name="cancel"]')
+      this.errorMessage = page.locator('h3[data-test="error"]');
+      this.totalPriceText = page.locator('div[data-test="total-label"]');
+      this.allItemPrice = page.locator('div[data-test="inventory-item-price"]');
+   }
 
- async enterlastName(lastNameText:string)
- {
-    await this.fillField(this.lastNameTextBox,lastNameText);
- }
+   //Method to operate the Locators
 
- async enterpincode(pincodeText:string)
- {
-    await this.fillField(this.pincodeTextBox,pincodeText);
- }
+   async enterfirstName(firstNameText: string) {
+      await this.fillField(this.firstNameTextBox, firstNameText);
+   }
 
-async clickcontinue()
- {
-   
-    this.clickelement(this.continueButton);
- }
+   async enterlastName(lastNameText: string) {
+      await this.fillField(this.lastNameTextBox, lastNameText);
+   }
 
- async clickCancel()
- {
-   this.clickelement(this.cancelButton);
- }
+   async enterpincode(pincodeText: string) {
+      await this.fillField(this.pincodeTextBox, pincodeText);
+   }
 
- async isContinueButtonEnabled()
- {
+   async clickcontinue() {
 
-   return this.continueButton.isEnabled();
-   
- }
- async getErrorMessageText():Promise<string>
- {
+      this.clickelement(this.continueButton);
+   }
+
+   async clickCancel() {
+      this.clickelement(this.cancelButton);
+   }
+
+   async isContinueButtonEnabled() {
+
+      return this.continueButton.isEnabled();
+
+   }
+   async getErrorMessageText(): Promise<string> {
 
       return await this.getElementText(this.errorMessage);
-}
-
-async completeCheckout(firstName:string,lastName:string,pincode:string){
-   await this.enterfirstName(firstName);
-    await this.enterlastName(lastName);
-    await this.enterpincode(pincode);
-    await this.clickcontinue();
-}
-async getTotalPriceText():Promise<number>{
-   const priceText=await this.getElementText(this.totalPriceText);
-   let cleanedPriceText=priceText.replace('$','').trim();
-   cleanedPriceText=cleanedPriceText.replace(/[^0-9.-]+/g,'');
-   const totalPrice=parseFloat(cleanedPriceText);
-   return totalPrice;
-}
-
-async getAllProductPriceListTotal():Promise<number>{
-   const allelements=await this.allItemPrice.all();
-   let productPriceSum=0;
-   for(let e of allelements){
-     const priceText =await e.textContent();
-     if(!priceText || typeof priceText!=='string'){
-      console.error('Invalid Price text format');
-      continue;
-     }
-     const cleanedPriceText= priceText.replace('$','').trim();
-     const priceNumber=parseFloat(cleanedPriceText);
-     if(isNaN(priceNumber))
-     {
-      console.error('Failed to parse Price Text: ', cleanedPriceText)
-      continue;
-     }
-     productPriceSum+=priceNumber; 
    }
-   productPriceSum+=productPriceSum*0.08; 
-   const roundedSum=Number(productPriceSum.toFixed(2));
-   return roundedSum;
-}
+
+   async completeCheckout(firstName: string, lastName: string, pincode: string) {
+      await this.enterfirstName(firstName);
+      await this.enterlastName(lastName);
+      await this.enterpincode(pincode);
+      await this.clickcontinue();
+   }
+   async getTotalPriceText(): Promise<number> {
+      const priceText = await this.getElementText(this.totalPriceText);
+      let cleanedPriceText = priceText.replace('$', '').trim();
+      cleanedPriceText = cleanedPriceText.replace(/[^0-9.-]+/g, '');
+      const totalPrice = parseFloat(cleanedPriceText);
+      return totalPrice;
+   }
+
+   async getAllProductPriceListTotal(): Promise<number> {
+      const allelements = await this.allItemPrice.all();
+      let productPriceSum = 0;
+      for (let e of allelements) {
+         const priceText = await e.textContent();
+         if (!priceText || typeof priceText !== 'string') {
+            console.error('Invalid Price text format');
+            continue;
+         }
+         const cleanedPriceText = priceText.replace('$', '').trim();
+         const priceNumber = parseFloat(cleanedPriceText);
+         if (isNaN(priceNumber)) {
+            console.error('Failed to parse Price Text: ', cleanedPriceText)
+            continue;
+         }
+         productPriceSum += priceNumber;
+      }
+      productPriceSum += productPriceSum * 0.08;
+      const roundedSum = Number(productPriceSum.toFixed(2));
+      return roundedSum;
+   }
 }

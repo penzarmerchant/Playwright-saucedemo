@@ -39,8 +39,8 @@ export default class BasePage {
 
     }
 
-    async isElementVisible(element:Locator):Promise<boolean>{
+    async isElementVisible(element: Locator): Promise<boolean> {
         this.waitForElementVisible(element);
-        return element.isVisible();      
+        return element.isVisible();
     }
 }
