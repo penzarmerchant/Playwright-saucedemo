@@ -1,18 +1,12 @@
 {
-    "compilerOptions": {
-        "esModuleInterop": true,
-        "resolveJsonModule": true,
-        "baseUrl": ".",
-        "paths": {
-            "@pages/*": [
-                "tests/pages/*"
-            ],
-            "@fixtures/*": [
-                "fixtures/*"
-            ],
-            "@testData/*": [
-                "testData/*"
-            ]
-        }
+  "compilerOptions": {
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "baseUrl": ".",
+    "paths": {
+      "@pages/*": ["tests/pages/*"],
+      "@fixtures/*": ["fixtures/*"],
+      "@testData/*": ["testData/*"]
     }
+  }
 }
