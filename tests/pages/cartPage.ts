@@ -25,10 +25,14 @@ export class CartPage extends BasePage {
   async allItemNameCount(): Promise<number> {
     const allelements = await this.allItemName.all();
     const productItemName = [];
-    for (let e of allelements) {
+    for (const e of allelements) {
       const nameText = await e.textContent();
       productItemName.push(nameText);
     }
     return productItemName.length;
+  }
+
+  async method1(){
+    
   }
 }

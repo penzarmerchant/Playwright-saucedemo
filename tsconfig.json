@@ -7,6 +7,8 @@
       "@pages/*": ["tests/pages/*"],
       "@fixtures/*": ["fixtures/*"],
       "@testData/*": ["testData/*"]
-    }
+    },
+    "noUnusedLocals": true,
+    "noUnusedParameters": true
   }
 }
