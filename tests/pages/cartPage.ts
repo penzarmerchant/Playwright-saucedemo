@@ -31,8 +31,4 @@ export class CartPage extends BasePage {
     }
     return productItemName.length;
   }
-
-  async method1(){
-    
-  }
 }

@@ -42,9 +42,8 @@ export default [
         { allow: ['arrowFunctions'] },
       ],
       'prefer-const': 'off',
-      '@typescript-eslint/no-unused-vars-experimental': ['error'],
     },
     files: [
-        '**/*.ts'],
+        '**/*.ts','**/*.tsx'],
   },
 ];
