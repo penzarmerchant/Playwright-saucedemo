@@ -19,24 +19,17 @@ export class InventoryPage extends BasePage {
     super(page);
     this.addbackpack = page.locator('#add-to-cart-sauce-labs-backpack');
     this.addbacklight = page.locator('#add-to-cart-sauce-labs-bike-light');
-    this.addfleeceJacket = page.locator(
-      '#add-to-cart-sauce-labs-fleece-jacket',
-    );
+    this.addfleeceJacket = page.locator('#add-to-cart-sauce-labs-fleece-jacket');
     this.removebackpack = page.locator('#remove-sauce-labs-backpack');
     this.removefleecejacket = page.locator('#remove-sauce-labs-fleece-jacket');
-    this.tshirt = page.locator(
-      'button[name="add-to-cart-test.allthethings()-t-shirt-(red)"]',
-    );
+    this.tshirt = page.locator('button[name="add-to-cart-test.allthethings()-t-shirt-(red)"]');
     this.cartLogo = page.locator('a[class="shopping_cart_link"]');
     this.backpackimage = page.locator('#item_4_img_link');
-    this.sortButton = page.locator(
-      'select[data-test="product-sort-container"]',
-    );
+    this.sortButton = page.locator('select[data-test="product-sort-container"]');
     this.allItemName = page.locator('div[data-test="inventory-item-name"]');
     this.allItemPrice = page.locator('div[data-test="inventory-item-price"]');
   }
 
-  // Method to operate the Locators
   async addBackpack() {
     await this.clickelement(this.addbackpack);
   }

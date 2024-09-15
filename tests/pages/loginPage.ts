@@ -15,8 +15,7 @@ export class LoginPage extends BasePage {
     this.loginButton = page.locator('#login-button');
     this.errorMessage = page.locator('h3[data-test="error"]');
   }
-  //Method to operate the Locators
-
+  
   async enterUsername(usernameText: string) {
     await this.fillField(this.usernameTextBox, usernameText);
   }
