@@ -7,6 +7,7 @@ const successMessage = 'Thank you for your order!';
 const errorMessage = 'Error: First Name is required';
 
 test.beforeEach(async ({ page, loginPage }) => {
+  await allure.feature('Cart')
   await allure.step('Navigating to the Login page', async () => {
     await page.goto('/');
   });
@@ -28,6 +29,7 @@ test('Verify Successful Product Placement', async ({
 }) => {
   await allure.tags('smoke');
   await allure.severity(Severity.CRITICAL);
+ 
 
   await allure.step('Adding items to cart', async () => {
     await inventoryPage.addBackpack();

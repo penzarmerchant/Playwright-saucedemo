@@ -4,6 +4,7 @@ import { allure } from 'allure-playwright';
 import { Severity } from 'allure-js-commons';
 
 test.beforeEach(async ({ page, loginPage }) => {
+  await allure.feature('Product Browsing');
   await allure.step('Navigating to the Login page', async () => {
     await page.goto('/');
   });

@@ -9,6 +9,7 @@ const usernameBlankError = 'Epic sadface: Username is required';
 const passwordBlankError = 'Epic sadface: Password is required';
 
 test.beforeEach(async ({ page }) => {
+  await allure.feature('Login')
   await allure.step('Navigating to the Login page', async () => {
     await page.goto('/');
   });

@@ -6,6 +6,7 @@ import { Severity } from 'allure-js-commons';
 const aboutUrl = 'https://saucelabs.com/';
 
 test.beforeEach(async ({ page, loginPage }) => {
+  await allure.feature('SidePanel');
   await allure.step('Navigating to the Login page', async () => {
     await page.goto('/');
   });
