@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "copy:history": "xcopy allure-report\\history allure-results\\history",
+    "copy:history": "xcopy /s /y allure-report\\history allure-results\\history",
     "generate:reports":"npm run copy:history && npx allure generate ./allure-results --clean",
     "open:report": "npx allure open ./allure-report",
     "execute:scrpit": "npx playwright test",
