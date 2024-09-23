@@ -11,7 +11,7 @@ This project aims to automate various scenarios of Sauce-Demo using Playwright
 - Typescript
 
 ## Installation
--  Install nodejs based on OS from [Official Website](https://nodejs.org/en/download/package-manager)
+- Install nodejs based on OS from [Official Website](https://nodejs.org/en/download/package-manager)
 - Install typescript- `npm install -g typescript`
 - Install all dependencies- `npm install`
 
